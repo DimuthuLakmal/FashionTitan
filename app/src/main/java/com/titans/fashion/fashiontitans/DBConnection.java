@@ -97,18 +97,24 @@ public class DBConnection {
 
     }
 
-    public String updateBulbStatus(String id,String status,String on_user)
+    public String saveUser(String[] userdata)
     {
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-        nameValuePairs.add(new BasicNameValuePair("id",id.toString()));
-        nameValuePairs.add(new BasicNameValuePair("on_user",on_user.toString()));
-        nameValuePairs.add(new BasicNameValuePair("status",status.toString()));
+        nameValuePairs.add(new BasicNameValuePair("un",userdata[0].toString()));
+        nameValuePairs.add(new BasicNameValuePair("pw",userdata[1].toString()));
+        nameValuePairs.add(new BasicNameValuePair("addressOne",userdata[2].toString()));
+        nameValuePairs.add(new BasicNameValuePair("addressTwo",userdata[3].toString()));
+        nameValuePairs.add(new BasicNameValuePair("sleeves",userdata[4].toString()));
+        nameValuePairs.add(new BasicNameValuePair("chest",userdata[5].toString()));
+        nameValuePairs.add(new BasicNameValuePair("waist",userdata[6].toString()));
+        nameValuePairs.add(new BasicNameValuePair("hip",userdata[7].toString()));
+        nameValuePairs.add(new BasicNameValuePair("inseam",userdata[8].toString()));
 
         try
         {
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://www.eboxteam.com/eHome/mobile/update_bulb.php");
+            HttpPost httppost = new HttpPost("http://10.0.2.2/Fashion/usersignup.php");
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();

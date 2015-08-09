@@ -25,6 +25,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".UserRegistration"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.USERREGISTRATION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MeasurementsMen"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MEASUREMENTSMEN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

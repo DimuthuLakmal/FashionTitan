@@ -20,6 +20,7 @@ public class UserLogin extends Activity implements View.OnClickListener{
     EditText userName;
     EditText password;
     Button login;
+    Button signUp;
 
     private String un,pw;
     @Override
@@ -31,16 +32,39 @@ public class UserLogin extends Activity implements View.OnClickListener{
         userName = (EditText)findViewById(R.id.usernametext);
         password = (EditText)findViewById(R.id.passwordtext);
         login = (Button)findViewById(R.id.loginbutton);
+        signUp=(Button)findViewById(R.id.signupButton);
 
         //set listner to button
         login.setOnClickListener(this);
+        signUp.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        un=userName.getText().toString();
-        pw = password.getText().toString();
-        new GetUserData().execute(new DBConnection());
+
+        //select which button is clicked
+        switch (v.getId()) {
+
+            case R.id.loginbutton:
+                System.out.println(R.id.loginbutton);
+                un=userName.getText().toString();
+                pw = password.getText().toString();
+
+                //getData from database
+                new GetUserData().execute(new DBConnection());
+                break;
+
+            case R.id.signupButton:
+                Intent userRegistration = new Intent(getApplicationContext(), UserRegistration.class);
+                Bundle b = new Bundle();
+                userRegistration.putExtras(b);
+                startActivity(userRegistration);
+                UserLogin.this.finish();
+                break;
+
+            default:
+                break;
+        }
     }
 
     private class GetUserData extends AsyncTask<DBConnection,Long,JSONObject> {
@@ -57,15 +81,17 @@ public class UserLogin extends Activity implements View.OnClickListener{
                     String user_id = result.getString("id");
                     Toast t = Toast.makeText(getApplicationContext(), "Successfully Logged", Toast.LENGTH_LONG);
                     t.show();
+
                     Intent home = new Intent(getApplicationContext(),HomeFashion.class);
+
+                    //binding extras to bundle to pass to next activity
                     Bundle b = new Bundle();
                     b.putString("un",un);
-
-                    //home.putExtra("un",un);
                     b.putString("pw",pw);
                     b.putString("id",user_id);
                     home.putExtras(b);
-                    startActivity(home);
+
+                    startActivity(home);//start new activity
                     UserLogin.this.finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
