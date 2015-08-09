@@ -44,11 +44,7 @@ public class UserRegistration extends Activity{
 
     public void addListenerOnButton() {
 
-        final String userNameText = userName.getText().toString();
-        final String passwordText = password.getText().toString();
-        final String rePasswordText = rePassword.getText().toString();
-        final String addressLineOneText = addressLineOne.getText().toString();
-        final String addressLineTwoText = addressLineTwo.getText().toString();
+
 
         radioGroup = (RadioGroup) findViewById(R.id.radioSexReg);
 
@@ -57,6 +53,11 @@ public class UserRegistration extends Activity{
             @Override
             public void onClick(View v) {
 
+                String userNameText = userName.getText().toString();
+                String passwordText = password.getText().toString();
+                String rePasswordText = rePassword.getText().toString();
+                String addressLineOneText = addressLineOne.getText().toString();
+                String addressLineTwoText = addressLineTwo.getText().toString();
                 // get selected radio button from radioGroup
                 int selectedId = radioGroup.getCheckedRadioButtonId();
 

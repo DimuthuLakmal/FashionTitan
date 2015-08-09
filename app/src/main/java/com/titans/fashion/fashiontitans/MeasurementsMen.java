@@ -1,9 +1,17 @@
 package com.titans.fashion.fashiontitans;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.view.View.OnClickListener;
+import android.view.View;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Dimuthu on 2015-08-09.
@@ -17,6 +25,7 @@ public class MeasurementsMen extends Activity {
     EditText hip;
     EditText inseam;
     Button saveButton;
+    String[] data;
 
     String un,pw,addressLineOne,addressLineTwo;
 
@@ -29,6 +38,9 @@ public class MeasurementsMen extends Activity {
         Bundle b = getIntent().getExtras();
         un = b.getString("un");
         pw = b.getString("pw");
+        System.out.println("fdsfa");
+        System.out.println("aaaa");
+        System.out.println(un);
         addressLineOne = b.getString("addressOne");
         addressLineTwo = b.getString("addressTwo");
 
@@ -39,51 +51,41 @@ public class MeasurementsMen extends Activity {
         inseam = (EditText)findViewById(R.id.inseamReg);
         saveButton = (Button)findViewById(R.id.saveButtonReg);
 
+        data = new String[9];
+
+        addListenerOnButton();
     }
 
     public void addListenerOnButton() {
 
-        final String userNameText = userName.getText().toString();
-        final String passwordText = password.getText().toString();
-        final String rePasswordText = rePassword.getText().toString();
-        final String addressLineOneText = addressLineOne.getText().toString();
-        final String addressLineTwoText = addressLineTwo.getText().toString();
 
-        radioGroup = (RadioGroup) findViewById(R.id.radioSexReg);
 
-        nextButton.setOnClickListener(new OnClickListener() {
+        saveButton.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                final String sleevesText = sleeves.getText().toString();
+                final String chestText = chest.getText().toString();
+                final String waistText = waist.getText().toString();
+                final String hipText = hip.getText().toString();
+                final String inseamText = inseam.getText().toString();
 
-                // get selected radio button from radioGroup
-                int selectedId = radioGroup.getCheckedRadioButtonId();
-
-                // find the radiobutton by returned id
-                selectedRadioButton = (RadioButton) findViewById(selectedId);
-
-                if(rePasswordText.equals(passwordText)) {
-                    if (selectedRadioButton.getText().equals("Male")) {
-
-                        Intent measurementsMen = new Intent(getApplicationContext(), MeasurementsMen.class);
-                        Bundle b = new Bundle();
-                        b.putString("un", userNameText);
-
-                        //home.putExtra("un",un);
-                        b.putString("pw", passwordText);
-                        b.putString("addressOne", addressLineOneText);
-                        b.putString("addressTwo", addressLineTwoText);
-
-
-                        measurementsMen.putExtras(b);
-                        startActivity(measurementsMen);
-                        UserRegistration.this.finish();
-                    }
-                }
-
+                MeasurementsMen.this.data=  new String[]{un,pw,addressLineOne,addressLineTwo,sleevesText,chestText,waistText,hipText,inseamText};
+                new InsertData().execute(new DBConnection());
             }
 
         });
+
+    }
+
+    private class InsertData extends AsyncTask<DBConnection, Long, String> {
+
+        @Override
+        protected String doInBackground(DBConnection... arg0) {
+            System.out.println(MeasurementsMen.this.data[0]);
+            return arg0[0].saveUser(MeasurementsMen.this.data);
+        }
+
 
     }
 }

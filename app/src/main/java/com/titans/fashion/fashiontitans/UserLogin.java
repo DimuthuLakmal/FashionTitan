@@ -46,7 +46,7 @@ public class UserLogin extends Activity implements View.OnClickListener{
         switch (v.getId()) {
 
             case R.id.loginbutton:
-                System.out.println(R.id.loginbutton);
+
                 un=userName.getText().toString();
                 pw = password.getText().toString();
 

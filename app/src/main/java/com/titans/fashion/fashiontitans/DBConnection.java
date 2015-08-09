@@ -100,7 +100,7 @@ public class DBConnection {
     public String saveUser(String[] userdata)
     {
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-
+        System.out.println(userdata[0]);
         nameValuePairs.add(new BasicNameValuePair("un",userdata[0].toString()));
         nameValuePairs.add(new BasicNameValuePair("pw",userdata[1].toString()));
         nameValuePairs.add(new BasicNameValuePair("addressOne",userdata[2].toString()));
