@@ -3,42 +3,54 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
 
-    <EditText
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/usernametext"
-        android:layout_marginTop="218dp"
-        android:width="250dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/passwordtext"
-        android:width="250dp"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/usernametext"
-        android:layout_alignStart="@+id/usernametext" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/usernametext"
+            android:layout_marginTop="218dp"
+            android:width="250dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/loginbutton"
-        android:layout_below="@+id/passwordtext"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:width="200dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/passwordtext"
+            android:width="250dp"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/usernametext"
+            android:layout_alignStart="@+id/usernametext" />
+    </LinearLayout>
 
-    <Button
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:id="@+id/signupButton"
-        android:layout_below="@+id/loginbutton"
-        android:layout_centerHorizontal="true"
-        android:width="200dp" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:id="@+id/loginbutton"
+            android:layout_below="@+id/passwordtext"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:width="200dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:id="@+id/signupButton"
+            android:layout_below="@+id/loginbutton"
+            android:layout_centerHorizontal="true"
+            android:width="200dp" />
+    </LinearLayout>
 </RelativeLayout>
