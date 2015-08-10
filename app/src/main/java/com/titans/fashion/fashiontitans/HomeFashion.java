@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -52,10 +53,10 @@ public class HomeFashion extends Activity {
         });
 
         //onclick listener on listview
-        listView.setOnClickListener(new View.OnClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                //depending on the selection, go to relevant outfit page
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //depending on the selection, lets proceed to a new page
             }
         });
 

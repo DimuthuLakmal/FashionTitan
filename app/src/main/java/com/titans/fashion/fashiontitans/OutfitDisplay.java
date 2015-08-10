@@ -4,13 +4,31 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class OutfitDisplay extends ActionBarActivity {
+
+    Button btnBack, btnSeeComments , btnBuyNow, btnViewSimilar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outfit_display);
+
+        btnBack = (Button) findViewById(R.id.btnBack);
+        btnSeeComments = (Button) findViewById(R.id.btnSeeComments); //get comments on that dress.
+        btnBuyNow = (Button) findViewById(R.id.btnBuyNow);//have to connect to a payment gateway
+        btnViewSimilar = (Button) findViewById(R.id.btnViewSimilar); //depending on the database and recent searches
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
     }
 
     @Override
