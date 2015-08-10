@@ -24,7 +24,7 @@ public class MeasurementsMen extends Activity {
     EditText waist;
     EditText hip;
     EditText inseam;
-    Button saveButton;
+    Button saveButton ,btnBack;
     String[] data;
 
     String un,pw,addressLineOne,addressLineTwo;
@@ -50,10 +50,20 @@ public class MeasurementsMen extends Activity {
         hip = (EditText)findViewById(R.id.hipReg);
         inseam = (EditText)findViewById(R.id.inseamReg);
         saveButton = (Button)findViewById(R.id.saveButtonReg);
+        btnBack = (Button) findViewById(R.id.btnBack);
 
         data = new String[9];
 
         addListenerOnButton();
+
+        //set on click listener to back button
+        btnBack.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MeasurementsMen.this, UserRegistration.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void addListenerOnButton() {
@@ -72,6 +82,10 @@ public class MeasurementsMen extends Activity {
 
                 MeasurementsMen.this.data=  new String[]{un,pw,addressLineOne,addressLineTwo,sleevesText,chestText,waistText,hipText,inseamText};
                 new InsertData().execute(new DBConnection());
+
+                Toast.makeText(MeasurementsMen.this, "User Registration Successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MeasurementsMen.this, HomeFashion.class);
+                startActivity(intent);
             }
 
         });

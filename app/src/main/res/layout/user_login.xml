@@ -6,16 +6,24 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="177dp">
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/usernametext"
-            android:layout_marginTop="218dp"
+            android:layout_marginTop="10dp"
             android:width="250dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:ellipsize="start"
+            android:gravity="center_horizontal"
+            android:hint="Username"
+            android:singleLine="true" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -26,13 +34,22 @@
             android:width="250dp"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/usernametext"
-            android:layout_alignStart="@+id/usernametext" />
+            android:layout_alignStart="@+id/usernametext"
+            android:ellipsize="start"
+            android:gravity="center_horizontal"
+            android:hint="Password"
+            android:layout_marginTop="12dp"
+            android:singleLine="true"
+            />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:layout_width="wrap_content"
@@ -41,7 +58,7 @@
             android:id="@+id/loginbutton"
             android:layout_below="@+id/passwordtext"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="05dp"
             android:width="200dp" />
 
         <Button
@@ -52,5 +69,17 @@
             android:layout_below="@+id/loginbutton"
             android:layout_centerHorizontal="true"
             android:width="200dp" />
+
     </LinearLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember Me"
+        android:id="@+id/checkBox"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignLeft="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout"
+        android:checked="false" />
+
 </RelativeLayout>

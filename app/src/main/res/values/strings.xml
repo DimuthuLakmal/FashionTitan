@@ -9,5 +9,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_my_model">MyModel</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_shopping_menu">ShoppingMenu</string>
+    <string name="title_activity_outfit_display">OutfitDisplay</string>
 
 </resources>

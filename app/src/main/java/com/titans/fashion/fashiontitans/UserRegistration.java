@@ -22,7 +22,7 @@ public class UserRegistration extends Activity{
     EditText addressLineTwo;
     RadioButton selectedRadioButton;
     RadioGroup radioGroup;
-    Button nextButton;
+    Button nextButton,btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,19 @@ public class UserRegistration extends Activity{
         addressLineOne = (EditText)findViewById(R.id.addressLineOneReg);
         addressLineTwo = (EditText)findViewById(R.id.addressLineTwoReg);
         nextButton = (Button)findViewById(R.id.nextButtonReg);
+        btnBack = (Button) findViewById(R.id.btnBack);
 
         //add listener to nextButton
         addListenerOnButton();
+
+        //set on click listener to back button
+        btnBack.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserRegistration.this,UserLogin.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

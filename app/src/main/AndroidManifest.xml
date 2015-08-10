@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.titans.fashion.fashiontitans" >
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -42,6 +44,18 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MyModel"
+            android:label="@string/title_activity_my_model" >
+        </activity>
+        <activity
+            android:name=".ShoppingMenu"
+            android:label="@string/title_activity_shopping_menu" >
+        </activity>
+        <activity
+            android:name=".OutfitDisplay"
+            android:label="@string/title_activity_outfit_display" >
         </activity>
     </application>
 

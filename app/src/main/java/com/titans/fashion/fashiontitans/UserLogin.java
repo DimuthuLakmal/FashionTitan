@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class UserLogin extends Activity implements View.OnClickListener{
     EditText password;
     Button login;
     Button signUp;
+    CheckBox checkBox; // to state remember me
 
     private String un,pw;
     @Override
@@ -33,10 +35,12 @@ public class UserLogin extends Activity implements View.OnClickListener{
         password = (EditText)findViewById(R.id.passwordtext);
         login = (Button)findViewById(R.id.loginbutton);
         signUp=(Button)findViewById(R.id.signupButton);
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
 
         //set listner to button
         login.setOnClickListener(this);
         signUp.setOnClickListener(this);
+        checkBox.setOnClickListener(this);
     }
 
     @Override
@@ -50,6 +54,9 @@ public class UserLogin extends Activity implements View.OnClickListener{
                 un=userName.getText().toString();
                 pw = password.getText().toString();
 
+                if (checkBox.isSelected()){
+                    //implement the remember me function
+                }
                 //getData from database
                 new GetUserData().execute(new DBConnection());
                 break;
@@ -61,6 +68,7 @@ public class UserLogin extends Activity implements View.OnClickListener{
                 startActivity(userRegistration);
                 UserLogin.this.finish();
                 break;
+
 
             default:
                 break;
